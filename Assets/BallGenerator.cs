@@ -18,6 +18,10 @@ public class BallGenerator : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             GameObject ball = Instantiate(ballPrefab) as GameObject;
+
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            Vector3 worldDir = ray.direction;
+            ball.GetComponent<BallContolloler>().Shoot(worldDir.normalized * 2000);
         }
     }
 }
