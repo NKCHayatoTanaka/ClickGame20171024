@@ -3,6 +3,7 @@ using System.Collections;
 
 public class BallContolloler : MonoBehaviour
 {
+    float time;
     public void Shoot(Vector3 dir)
     {
         GetComponent<Rigidbody>().AddForce(dir*2);
@@ -19,15 +20,17 @@ public class BallContolloler : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (transform.position.y <= 0.3)
+        
+        if (transform.position.y <= 0.3||time>=3f)
         {
             Destroy(gameObject);
         }
+        time += Time.deltaTime;
     }
 }
